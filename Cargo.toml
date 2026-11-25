@@ -1,6 +1,6 @@
 [package]
 name = "die-jellyfish"
-description = "Your ASCII jellyfish swimming in a DIE buffer, on the theme's background: an extension, outside DIE"
+description = "An ASCII jellyfish swimming in a DIE buffer, on the theme's background: an extension, outside DIE"
 version = "0.0.0"
 edition = "2024"
 rust-version = "1.95"

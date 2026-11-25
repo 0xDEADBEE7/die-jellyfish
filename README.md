@@ -1,10 +1,9 @@
 # die-jellyfish
 
 An ASCII jellyfish swimming in a [DIE](https://github.com/0xDEADBEE7/die) buffer, on the theme's
-background: the animal and its effects from the owner's jellyfish program
-(unpublished), worked out from the clock alone. It's a DIE extension in a repository
-of its own, outside DIE, which your config installs. It depends on die-core only, so it's
-platform-neutral.
+background: the animal and its effects from the owner's jellyfish program, worked out from the
+clock alone. It's a DIE extension in a repository of its own, outside DIE, which your config
+installs. It depends on die-core only, so it's platform-neutral.
 
 ## Using it
 
@@ -15,18 +14,19 @@ and the glint where it's about to be. The source listing, the readouts and the c
 gone. The five rows the readouts kept clear are two, one above and one below, with the animal
 centred between them.
 
-**When it shows.** With die-config's greeting (die-dev's before the split), DIE started with no
-file opens on it, where the empty `*scratch*` was: from the Dock, Finder or `open`, or a bare
-`die` that finds no DIE running. Over a session that brought back one window it takes that
-window, with every buffer back behind it, and `q` uncovers the one that was there. It stays away
-from a session's splits, from a start with a file named (`die foo.rs` opens on the file, and no
-jellyfish is made), from `:rebuild` and `:restart`, which bring back what was on screen, and from
-`die --check`. A restart that brings nothing back gets it where `*scratch*` would have been. A
-file that arrives after the launch takes its window, with the jellyfish still there behind it: a
-Finder double-click or `open -a DIE file` that starts DIE, and `die --wait` with no DIE running,
-which starts one and then sends its file, so those show a frame of jellyfish first. `:jellyfish`
-shows it in this window at any time: the one already swimming, or a new one from its first
-spark. Without the greeting, `:jellyfish` is the only way it shows.
+**When it shows.** With [die-config](https://github.com/0xDEADBEE7/die-config)'s greeting
+(die-dev's before the split), DIE started with no file opens on it, where the empty `*scratch*`
+was: from the Dock, Finder or `open`, or a bare `die` that finds no DIE running. Over a session
+that brought back one window it takes that window, with every buffer back behind it, and `q`
+uncovers the one that was there. It stays away from a session's splits, from a start with a file
+named (`die foo.rs` opens on the file, and no jellyfish is made), from `:rebuild` and `:restart`,
+which bring back what was on screen, and from `die --check`. A restart that brings nothing back
+gets it where `*scratch*` would have been. A file that arrives after the launch takes its window,
+with the jellyfish still there behind it: a Finder double-click or `open -a DIE file` that starts
+DIE, and `die --wait` with no DIE running, which starts one and then sends its file, so those show
+a frame of jellyfish first. `:jellyfish` shows it in this window at any time: the one already
+swimming, or a new one from its first spark. Without the greeting, `:jellyfish` is the only way it
+shows.
 
 **Keys**, in normal state, the only state it has. The first three rows are in the jellyfish's
 own keymap, so `\hk` describes them:
@@ -114,14 +114,19 @@ DIE started in. Removing it is deleting the dependency, the entry and the greeti
 
 ## Developing it beside DIE
 
-DIE's crates come from github.com/0xDEADBEE7/die at `main` (never a `rev`, so every repository
-in one build has the same die-core). To build against a DIE checkout instead, copy
-`dev-config.example.toml` to `.cargo/config.toml`, which git ignores, and replace each
-`/abs/path/to/...` placeholder with an absolute path (cargo doesn't expand `~`): the `[patch]`
-points die-core, die-vim and die-test-cap at the checkout's crates, and `[env]` sets
+DIE's crates come from [github.com/0xDEADBEE7/die](https://github.com/0xDEADBEE7/die) at `main`
+(never a `rev`, so every repository in one build has the same die-core). To build against a DIE
+checkout instead, copy `dev-config.example.toml` to `.cargo/config.toml`, which git ignores, and
+replace each `/abs/path/to/...` placeholder with an absolute path (cargo doesn't expand `~`): the
+`[patch]` points die-core, die-vim and die-test-cap at the checkout's crates, and `[env]` sets
 `DIE_FONT_DIR` to its `fonts/`. Patch every repository in one build to the same checkout.
 
-Then:
+```sh
+mkdir -p .cargo
+cp dev-config.example.toml .cargo/config.toml   # then write out the paths
+```
+
+Then, with the Rust that `rust-toolchain.toml` pins (1.96.0):
 
 ```sh
 cargo fmt --check
@@ -132,8 +137,7 @@ DIE_UNSEEN=1 cargo test
 Tests run through die-core's harness and need no window; `DIE_UNSEEN=1` keeps any that start
 DIE off the screen. Tests of DIE's extensions find DIE's fonts through `DIE_FONT_DIR`, which a
 standalone repository has to be given since it has no `fonts/` of its own; this crate's tests
-draw cells and read no font, so they also pass without it. `Cargo.lock` isn't committed yet:
-with path patches it would record local paths.
+draw cells and read no font, so they also pass without it.
 
 ## Licence
 
