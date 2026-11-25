@@ -116,14 +116,15 @@ DIE started in. Removing it is deleting the dependency, the entry and the greeti
 
 DIE's crates come from [github.com/0xDEADBEE7/die](https://github.com/0xDEADBEE7/die) at `main`
 (never a `rev`, so every repository in one build has the same die-core). To build against a DIE
-checkout instead, copy `dev-config.example.toml` to `.cargo/config.toml`, which git ignores, and
-replace each `/abs/path/to/...` placeholder with an absolute path (cargo doesn't expand `~`): the
-`[patch]` points die-core, die-vim and die-test-cap at the checkout's crates, and `[env]` sets
-`DIE_FONT_DIR` to its `fonts/`. Patch every repository in one build to the same checkout.
+checkout instead, copy `dev-config.example.toml` to `.cargo/config.toml`, which git ignores. Its
+paths are relative, for a DIE checkout beside this one (`../die`), and cargo reads them from this
+repository's root (change them if yours is elsewhere): the `[patch]` points die-core, die-vim and
+die-test-cap at the checkout's crates, and `[env]` sets `DIE_FONT_DIR` to its `fonts/`. Patch
+every repository in one build to the same checkout.
 
 ```sh
 mkdir -p .cargo
-cp dev-config.example.toml .cargo/config.toml   # then write out the paths
+cp dev-config.example.toml .cargo/config.toml   # for a DIE checkout beside this one
 ```
 
 Then, with the Rust that `rust-toolchain.toml` pins (1.96.0):
