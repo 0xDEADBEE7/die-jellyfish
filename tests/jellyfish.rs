@@ -12,7 +12,7 @@ use die_jellyfish::{Jellyfish, NAME, TICK};
 use die_vim::Vim;
 use std::time::Duration;
 
-/// Your theme's background and text, and a light theme's background.
+/// The owner's theme's background and text, and a light theme's background.
 const DARK: Rgb = Rgb(0x1a, 0x1a, 0x1a);
 const TEXT: Rgb = Rgb(0xcc, 0xcc, 0xcc);
 const LIGHT: Rgb = Rgb(0xf5, 0xf5, 0xf0);
@@ -20,7 +20,7 @@ const LIGHT: Rgb = Rgb(0xf5, 0xf5, 0xf0);
 /// The window's area, in cells.
 const AREA: (usize, usize) = (120, 50);
 
-/// die-vim and the jellyfish as your config has it, under a theme with your background and your
+/// die-vim and the jellyfish as die-config has it, under a theme with the owner's background and
 /// 80 centred columns, a text buffer on screen in a 120 x 50 window.
 fn harness() -> Harness {
     let exts: Vec<Box<dyn Extension>> =

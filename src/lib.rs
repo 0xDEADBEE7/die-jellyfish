@@ -1,13 +1,13 @@
-//! die-jellyfish: your ASCII jellyfish swimming in a DIE buffer, on the
-//! theme's background, as an extension: a repository of its own, outside DIE, that your config
-//! installs. It depends on die-core alone, so it's platform-neutral. Its parts:
+//! die-jellyfish: an ASCII jellyfish, the animal of the owner's jellyfish program, swimming in a
+//! DIE buffer, on the theme's background, as an extension: a repository of its own, outside DIE,
+//! that your config installs. It depends on die-core alone, so it's platform-neutral. Its parts:
 //!
 //! - this file: [`Jellyfish`], the extension, with your [`Options`], the `jellyfish` and
 //!   `jellyfish-close` commands, and the keys on its buffer;
 //! - [`sea`]: that program's `src/main.rs` with the listing, the readouts and the terminal cut
 //!   away, leaving the animal and its effects, drawn from the clock alone. A colour fades into
 //!   the theme's background where it faded to black, and the five rows the readouts wanted
-//!   became two. It keeps your file's own line breaks, so a diff against it shows the rest;
+//!   became two. It keeps that file's own line breaks, so a diff against it shows the rest;
 //! - `surface`: what `swim` and `main` were there: the clock, the size, the cells, and when it
 //!   swims.
 //!
@@ -18,7 +18,7 @@
 #[cfg(test)]
 use die_test_cap as _;
 
-// Your file's formatting, not rustfmt's, so the two can be compared.
+// That program's formatting, not rustfmt's, so the two can be compared.
 #[rustfmt::skip]
 pub mod sea;
 mod surface;

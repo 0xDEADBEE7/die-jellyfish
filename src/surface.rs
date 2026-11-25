@@ -1,5 +1,5 @@
-//! The jellyfish's buffer, which is what `swim` and `main` were in your program: the clock, the
-//! size and the cells, and when it swims.
+//! The jellyfish's buffer, which is what `swim` and `main` were in the jellyfish program: the
+//! clock, the size and the cells, and when it swims.
 
 use crate::sea::{Extras, Sea, Tones};
 use crate::{KIND, TICK};
@@ -164,7 +164,7 @@ impl Surface for Swim {
 
     fn render(&mut self, frame: &mut Frame, info: &RenderInfo) {
         let (cols, rows) = (frame.cols(), frame.rows());
-        // A cell's width over its height, and your program's 0.5 where no window has said.
+        // A cell's width over its height, and the program's 0.5 where no window has said.
         let (wide, high) = (f64::from(info.cell.width), f64::from(info.cell.height));
         let aspect = if wide > 0.0 && high > 0.0 {
             wide / high

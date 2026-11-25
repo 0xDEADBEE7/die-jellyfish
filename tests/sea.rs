@@ -5,7 +5,7 @@ use die_test_cap as _;
 
 use die_jellyfish::sea::{Extras, Sea, Tones};
 
-/// Your theme's background and text, and a light theme's.
+/// The owner's theme's background and text, and a light theme's.
 const DARK: (u32, u32) = (0x1a1a1a, 0xcccccc);
 const LIGHT: (u32, u32) = (0xf5f5f0, 0x1a1a1a);
 
@@ -78,7 +78,7 @@ fn no_size_time_or_cell_shape_panics_and_every_glyph_is_printable_ascii() {
         }
     }
     // What it makes of nonsense: no time is the start, the far future is as far as it goes, and
-    // a cell of no shape is your program's 0.5, within what `--aspect` allowed.
+    // a cell of no shape is the jellyfish program's 0.5, within what `--aspect` allowed.
     assert!(picture(80, 24, 0.5, f64::NAN) == picture(80, 24, 0.5, 0.0));
     assert!(picture(80, 24, 0.5, -3.0) == picture(80, 24, 0.5, 0.0));
     assert!(picture(80, 24, 0.5, f64::INFINITY) == picture(80, 24, 0.5, 0.0));
@@ -89,8 +89,8 @@ fn no_size_time_or_cell_shape_panics_and_every_glyph_is_printable_ascii() {
     assert!(picture(80, 24, 1e-9, 9.6) == picture(80, 24, 0.3, 9.6));
 }
 
-/// 50 x 30 at 9.6 s, the moment your `--still` took, with the water and without the shoal. It
-/// has drifted left, and one of the water's glints is behind its tentacles.
+/// 50 x 30 at 9.6 s, the moment the jellyfish program's `--still` took, with the water and
+/// without the shoal. It has drifted left, and one of the water's glints is behind its tentacles.
 const STILL: &str = r#"
                     .
                . /----\
@@ -160,8 +160,8 @@ fn a_moment_is_one_picture_whatever_was_drawn_before() {
 
 #[test]
 fn inks_stay_on_the_papers_far_side_and_the_animal_stays_readable_dark_or_light() {
-    // On a dark paper your colours as they were; on a light one highlights go to the text's
-    // colour and pigments deepen, since white wouldn't show.
+    // On a dark paper the jellyfish program's colours as they were; on a light one highlights go
+    // to the text's colour and pigments deepen, since white wouldn't show.
     let dark = Tones::for_theme(DARK.0, DARK.1);
     let light = Tones::for_theme(LIGHT.0, LIGHT.1);
     assert_eq!((dark.paper, light.paper), (DARK.0, LIGHT.0));
