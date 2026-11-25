@@ -1,6 +1,6 @@
 //! die-jellyfish: your ASCII jellyfish swimming in a DIE buffer, on the
-//! theme's background, as an extension (scope D14). It depends on die-core alone, so it's
-//! platform-neutral and out of the product: `cargo xtask lint` holds it to that. Its parts:
+//! theme's background, as an extension: a repository of its own, outside DIE, that your config
+//! installs. It depends on die-core alone, so it's platform-neutral. Its parts:
 //!
 //! - this file: [`Jellyfish`], the extension, with your [`Options`], the `jellyfish` and
 //!   `jellyfish-close` commands, and the keys on its buffer;
